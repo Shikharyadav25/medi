@@ -1,0 +1,3 @@
+import {httpsCallable} from 'firebase/functions';import {functions} from '@/services/firebase/config';
+export async function askHealthAI(message:string,attachments?:{base64:string;mimeType:string}[]){if(!functions)throw new Error('AI is unavailable until Firebase Functions is configured.');const result=await httpsCallable(functions,'healthAI')({message,attachments});return result.data as {answer:string;sources:string[];urgency:string}}
+export async function analyzeMeal(image:{base64:string;mimeType:string}){if(!functions)throw new Error('Meal analysis needs the configured secure backend.');const result=await httpsCallable(functions,'analyzeMeal')({image});return result.data as {name:string;calories:number;protein:number;carbs:number;fats:number;confidence:string}}

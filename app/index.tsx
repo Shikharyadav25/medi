@@ -1,0 +1,2 @@
+import {useEffect} from 'react'; import {ActivityIndicator,View} from 'react-native'; import {router} from 'expo-router'; import {loadDemo} from '@/features/auth/session'; import {colors} from '@/constants';
+export default function Index(){useEffect(()=>{loadDemo().then(p=>router.replace(p?.onboardingComplete?'/(tabs)':'/(onboarding)/splash'))},[]);return <View style={{flex:1,backgroundColor:colors.ink,justifyContent:'center'}}><ActivityIndicator color="white"/></View>}
