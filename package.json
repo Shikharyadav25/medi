@@ -1,0 +1,9 @@
+{
+  "name": "medi-bud",
+  "version": "1.0.0",
+  "private": true,
+  "main": "expo-router/entry",
+  "scripts": {"start":"expo start","android":"expo start --android","ios":"expo start --ios","web":"expo start --web","typecheck":"tsc --noEmit","functions:build":"npm --prefix functions run build","functions:serve":"npm --prefix functions run serve"},
+  "dependencies": {"@expo/vector-icons":"^14.0.2","@react-native-async-storage/async-storage":"^1.23.1","expo":"~51.0.28","expo-document-picker":"~12.0.2","expo-image-picker":"~15.0.7","expo-linear-gradient":"~13.0.2","expo-router":"~3.5.24","expo-status-bar":"~1.12.1","firebase":"^10.14.1","react":"18.2.0","react-dom":"18.2.0","react-native":"0.74.5","react-native-safe-area-context":"4.10.8","react-native-screens":"3.31.1","react-native-web":"~0.19.10","zod":"^3.23.8"},
+  "devDependencies": {"@types/react":"~18.2.79","typescript":"~5.3.3"}
+}

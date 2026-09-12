@@ -1,0 +1,14 @@
+import {getApp,getApps,initializeApp} from 'firebase/app';
+import {getAuth,initializeAuth} from 'firebase/auth';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {getReactNativePersistence} from 'firebase/auth';
+import {getFirestore} from 'firebase/firestore';
+import {getStorage} from 'firebase/storage';
+import {getFunctions} from 'firebase/functions';
+const config={apiKey:process.env.EXPO_PUBLIC_FIREBASE_API_KEY,authDomain:process.env.EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN,projectId:process.env.EXPO_PUBLIC_FIREBASE_PROJECT_ID,storageBucket:process.env.EXPO_PUBLIC_FIREBASE_STORAGE_BUCKET,messagingSenderId:process.env.EXPO_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,appId:process.env.EXPO_PUBLIC_FIREBASE_APP_ID};
+export const firebaseConfigured=Boolean(config.apiKey&&config.projectId&&config.appId);
+const app=firebaseConfigured?(getApps()[0]??initializeApp(config)):undefined;
+export const auth=app?(getApps().length>1?getAuth(app):initializeAuth(app,{persistence:getReactNativePersistence(AsyncStorage)})):undefined;
+export const db=app?getFirestore(app):undefined;
+export const storage=app?getStorage(app):undefined;
+export const functions=app?getFunctions(app,process.env.EXPO_PUBLIC_FUNCTIONS_REGION||'asia-south1'):undefined;
